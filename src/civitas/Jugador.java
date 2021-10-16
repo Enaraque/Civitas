@@ -24,11 +24,11 @@ public class Jugador implements Comparable<Jugador>{
     private ArrayList<Casilla> propiedades;
 
     /**
-  * Constructor de la clase Jugador
-  * Crea una instancia de Jugador con sus parametros iniciales por defecto.
-  *
-  * @param nombre Nombre del jugador.
-  */
+    * Constructor de la clase Jugador
+    * Crea una instancia de Jugador con sus parametros iniciales por defecto.
+    *
+    * @param nombre Nombre del jugador.
+    */
     Jugador(String nombre){
         this.nombre = nombre;
         this.casillaActual = 0;
@@ -61,16 +61,32 @@ public class Jugador implements Comparable<Jugador>{
         return Jugador.CASASPORHOTEL;
     }
     
+    //Interfaz
     @Override
     public int compareTo(Jugador otro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    /**
+    * Calcula si el jugador está en bancarrota o no.
+    * Un jugador se declara en bancarrota si su saldo es menor que 0.
+    *
+    * @param void
+    * @return True si y solo si está en bancarrota.
+    */
     boolean enBancarrota(){
         return this.getSaldo() < 0;
     }
     
+    /**
+    * Consulta si la propiedad con indice ip existe 
+    * Un jugador se declara en bancarrota si su saldo es menor que 0.
+    *
+    * @param un valor
+    * @return True si y solo si está en bancarrota.
+    */
     public boolean existeLaPropiedad(int ip){
+        assert(ip >= 0);
         return this.getPropiedades().size() > ip;
     }
     
