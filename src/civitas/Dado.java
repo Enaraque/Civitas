@@ -12,6 +12,7 @@ import java.util.Random;
  */
 class Dado {
   static final private Dado instance = new Dado();
+  
   static final private int ULTIMORESULTADOINICIAL = 0;
   static final private int VALORDADOMINIMO = 1;
   static final private int VALORDADOMAXIMO = 6;
@@ -34,7 +35,7 @@ class Dado {
     
     
     if(debug){
-      ultimo_resultado = 1;
+      ultimo_resultado = VALORDADOMINIMO;
     }
     else{
       //nextInt puede generar ceros, por lo que necesitamos evitar dicho caso sumando 1 al final.
