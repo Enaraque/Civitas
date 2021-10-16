@@ -15,7 +15,7 @@ public class Tablero {
     
     Tablero() {
         casillas = new ArrayList<Casilla>();
-        Casilla nueva = new Casilla(TipoCasilla.DESCANSO, "Salida",0, 0, 0);
+        Casilla nueva = new Casilla("Salida",0, 0, 0);
         casillas.add(nueva);
         porSalida = false;
     }

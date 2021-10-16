@@ -73,14 +73,14 @@ public class Civitas {
         System.out.println("\nComprobacion 5: Pruebas de Tablero y Casilla.");
         Tablero t = new Tablero();
         
-        t.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Gran Via de Colon", 400, 200, 100));
-        t.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Carretera de Cordoba", 100, 50, 25));
-        t.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Paseo de los Tristes", 375, 200, 125));
-        t.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Camino de Ronda", 200, 100, 50));
-        t.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Pedro Antonio de Alarcon", 300, 150, 75));
-        t.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Paseo del Salon", 500, 225, 110));
-        t.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Avenida de Andalucia", 150, 75, 35));
-        t.añadeCasilla(new Casilla(TipoCasilla.CALLE, "Avenida de la Constitucion", 450, 225, 110));
+        t.añadeCasilla(new Casilla("Gran Via de Colon", 400, 200, 100));
+        t.añadeCasilla(new Casilla("Carretera de Cordoba", 100, 50, 25));
+        t.añadeCasilla(new Casilla("Paseo de los Tristes", 375, 200, 125));
+        t.añadeCasilla(new Casilla("Camino de Ronda", 200, 100, 50));
+        t.añadeCasilla(new Casilla("Pedro Antonio de Alarcon", 300, 150, 75));
+        t.añadeCasilla(new Casilla("Paseo del Salon", 500, 225, 110));
+        t.añadeCasilla(new Casilla("Avenida de Andalucia", 150, 75, 35));
+        t.añadeCasilla(new Casilla("Avenida de la Constitucion", 450, 225, 110));
         
         for(int i=0; i < t.getNumCasillas(); i++){
             System.out.println(t.getCasilla(i).toString());
