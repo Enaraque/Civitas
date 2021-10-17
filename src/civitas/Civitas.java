@@ -62,7 +62,7 @@ public class Civitas {
         //Comprobacion 4: Tipos enumerados
         System.out.println("\nComprobacion 4: Mostrar tipos enumerados.");
         
-        EstadosJuego ej = EstadosJuego.INICIO_TURNO;
+        EstadoJuego ej = EstadoJuego.INICIO_TURNO;
         TipoCasilla tc = TipoCasilla.CALLE;
         TipoSorpresa ts = TipoSorpresa.PAGARCOBRAR;
         
