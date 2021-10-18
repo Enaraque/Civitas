@@ -103,55 +103,55 @@ public class CivitasJuego {
     }
     
     private void inicializarMazoSorpresas() {
-        String cobrar1 = "Al ir al supermercado a compar leche compraste un boleto de loteria,\n"
-                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR1 + "\n";
+        String cobrar1 = "Al ir al supermercado a comprar leche compraste un boleto de loteria,\n"
+                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR1 + ".\n";
         Sorpresa sorpresaPagarCobrar1 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, cobrar1, SORPRESAPAGARCOBRAR1);
         mazo.alMazo(sorpresaPagarCobrar1);
         
-        String cobrar2 = "Al ir al supermercado a compar leche compraste un boleto de loteria,\n"
-                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR3 + "\n";
+        String cobrar2 = "Al ir al supermercado a comprar leche compraste un boleto de loteria,\n"
+                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR3 + ".\n";
         Sorpresa sorpresaPagarCobrar2 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, cobrar2, SORPRESAPAGARCOBRAR3);
         mazo.alMazo(sorpresaPagarCobrar2);
         
         String pagarCasaHotel1 = "Has empezado el dia con una llamada telefonica. Te han dicho que hay\n"
                 + "obras por culpa de los conductos de extracción de humos en los edificios\n"
-                + "Paga " + SORPRESAPORCASAHOTEL2 + "\n";
+                + "Paga " + SORPRESAPORCASAHOTEL2 + ".\n";
         Sorpresa sorpresaPorCasaHotel1 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, pagarCasaHotel1, -SORPRESAPORCASAHOTEL2);
         mazo.alMazo(sorpresaPorCasaHotel1);
         
         String pagar1 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente \n"
-                + "tienes que llevarlo al taller\n" + "Pagas " + SORPRESAPAGARCOBRAR2 + "\n";
+                + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR2 + ".\n";
         Sorpresa sorpresaPagarCobrar3 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, pagar1, -SORPRESAPAGARCOBRAR2);
         mazo.alMazo(sorpresaPagarCobrar3);
         
         String pagarCasaHotel2 = "Has empezado el día con una llamanda telefónica. Te han dicho que hay\n"
-                + " obras por culpa de los conductos de extracción de humos en los edificios\n"
-                + "Paga " + SORPRESAPORCASAHOTEL1 + "\n";
+                + " obras por culpa de los conductos de extracción de humos en los edificios.\n"
+                + "Paga " + SORPRESAPORCASAHOTEL1 + ".\n";
         Sorpresa sorpresaPorCasaHotel2 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, pagarCasaHotel2, -SORPRESAPORCASAHOTEL1);
         mazo.alMazo(sorpresaPorCasaHotel2);
         
         String cobrar3 = "Al ir al supermercado a compar leche compraste un boleto de loteria,\n"
-                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR2 + "\n";
+                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR2 + ".\n";
         Sorpresa sorpresaPagarCobrar4 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, cobrar3, SORPRESAPAGARCOBRAR2);
         mazo.alMazo(sorpresaPagarCobrar4);
         
-        String pagar2 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente \n"
-                + "tienes que llevarlo al taller\n" + "Pagas " + SORPRESAPAGARCOBRAR1 + "\n";
+        String pagar2 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente,\n"
+                + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR1 + ".\n";
         Sorpresa sorpresaPagarCobrar5 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, pagar2, -SORPRESAPAGARCOBRAR1);
         mazo.alMazo(sorpresaPagarCobrar5);
         
         String cobrarCasaHotel1 = "¡Hoy es tu día de de suerte! Has ido al banco y por ser tan buen cliente\n"
-                + "han decidido hacerte un regalo\n" + "Cobra " + SORPRESAPORCASAHOTEL2 + "\n";
+                + "han decidido hacerte un regalo.\n" + "Cobra " + SORPRESAPORCASAHOTEL2 + ".\n";
         Sorpresa sorpresaPorCasaHotel3 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, cobrarCasaHotel1, SORPRESAPORCASAHOTEL2);
         mazo.alMazo(sorpresaPorCasaHotel3);
         
         String pagar3 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente \n"
-                + "tienes que llevarlo al taller\n" + "Pagas " + SORPRESAPAGARCOBRAR3 + "\n";
+                + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR3 + ".\n";
         Sorpresa sorpresaPagarCobrar6 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, pagar3, -SORPRESAPAGARCOBRAR3);
         mazo.alMazo(sorpresaPagarCobrar6);
         
         String cobrarCasaHotel2 = "¡Hoy es tu día de de suerte! Has ido al banco y por ser tan buen cliente\n"
-                + "han decidido hacerte un regalo\n" + "Cobra " + SORPRESAPORCASAHOTEL1 + "\n";
+                + "han decidido hacerte un regalo.\n" + "Cobra " + SORPRESAPORCASAHOTEL1 + ".\n";
         Sorpresa sorpresaPorCasaHotel4 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, cobrarCasaHotel2, SORPRESAPORCASAHOTEL1);
         mazo.alMazo(sorpresaPorCasaHotel4);
         
