@@ -29,11 +29,14 @@ public class CivitasJuego {
     private GestorEstados gestor;
     
     public CivitasJuego(ArrayList<String> nombres, boolean debug) {
+        
+        jugadores = new ArrayList<Jugador>();
         for (int i = 0; i < NUMAXJUGADORES; i++) {
             Jugador aux = new Jugador(nombres.get(i));
             jugadores.add(aux);
         }
-
+        
+        gestor = new GestorEstados();
         estado = gestor.estadoInicial();        
         Dado.getInstance().setDebug(debug);
         indiceJugadorActual = Dado.getInstance().quienEmpieza(NUMAXJUGADORES);
@@ -236,15 +239,60 @@ public class CivitasJuego {
             nombres.add("jugador4");
             
         CivitasJuego prueba = new CivitasJuego(nombres, true);
-        prueba.getJugadores().get(0).modificaSaldo(10);
-        prueba.getJugadores().get(1).modificaSaldo(20);
-        prueba.getJugadores().get(2).modificaSaldo(30);
-        prueba.getJugadores().get(3).modificaSaldo(40);
+        prueba.getJugadores().get(0).modificaSaldo(450);
+        prueba.getJugadores().get(1).modificaSaldo(500);
+        prueba.getJugadores().get(2).modificaSaldo(100);
+        prueba.getJugadores().get(3).modificaSaldo(2);
         prueba.ranking();
         
+        //Comprobando ranking();
         for (int i=0; i < NUMAXJUGADORES; i++) {
-            System.out.println("el jugador " + prueba.getJugadores().get(i) + "es el numero " + i + " con" + prueba.getJugadores().get(i).getSaldo());
-            
+            System.out.println("el jugador " + prueba.getJugadores().get(i) + "es el numero " + i + " con " + prueba.getJugadores().get(i).getSaldo());         
         }
+        
+        //Comprobadno el tablero y el mazo.
+        for (int i = 0; i < prueba.getTablero().getNumCasillas(); i++) {
+            System.out.println(prueba.getTablero().getCasilla(i).toString());
+        }
+        
+        for (int i = 0; i < prueba.mazo.getSize(); i++) {
+            System.out.println(prueba.mazo.getSorpresa(i).toString());
+        }
+        
+        //jugador actual y pasar turno
+        for (int i = 0; i < NUMAXJUGADORES*2; i++) {
+            Jugador señor = prueba.getJugadorActual();
+            System.out.println("El jugador de nombre "+ señor.getNombre()+ " tiene el turno siendo el jugador número " + prueba.getIndiceJugadorActual());
+            prueba.pasarTurno();
+        }
+        System.out.println("El jugador actual es "+ prueba.getJugadorActual().getNombre());
+        
+        //siguiente paso       
+        prueba.siguientePasoCompletado(OperacionJuego.AVANZAR);
+        System.out.println("El estado del jugador " + prueba.getJugadorActual().getNombre()+ " es " + prueba.estado);
+       
+        //pasar por salida
+        double dinerAntes = prueba.getJugadorActual().getSaldo();
+        prueba.getTablero().nuevaPosicion(14, 10);
+        prueba.contabilizarPasosPorSalida();
+        if (prueba.getJugadorActual().getSaldo() == dinerAntes+1000) {
+            System.out.println("Ha contabilizado bien :)");
+        }
+        else {
+            System.out.println("No contabilizado bien :(");
+        }
+        
+        //final del juego
+        prueba.getJugadores().get(0).paga(prueba.getJugadores().get(0).getSaldo()+1);
+        System.out.println(prueba.getJugadores().get(0).getSaldo());
+        
+        if(prueba.finalDelJuego()) {
+            System.out.println("EL JUEGO HA TERMINADO");
+        }
+        else {
+            System.out.println("EL JUEGO SIGUE EN MARCHA");
+        }
+        
+     
     }
 }

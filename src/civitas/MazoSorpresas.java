@@ -57,5 +57,14 @@ public class MazoSorpresas {
         return carta;
     }
     
+    //Añadidas adicionalmente
+    Sorpresa getSorpresa( int get) {
+        return sorpresas.get(get);
+    }
+    
+    int getSize() {
+        return sorpresas.size();
+    }
+    
             
 }

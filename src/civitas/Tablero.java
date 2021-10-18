@@ -13,7 +13,7 @@ public class Tablero {
     private ArrayList<Casilla> casillas;
     private boolean porSalida;
     
-    Tablero() {
+    public Tablero() {
         casillas = new ArrayList<Casilla>();
         Casilla nueva = new Casilla("Salida",0, 0, 0);
         casillas.add(nueva);
@@ -38,13 +38,17 @@ public class Tablero {
         casillas.add(casilla);
     }
     
-    Casilla getCasilla(int numCasilla) {
+    public Casilla getCasilla(int numCasilla) {
         Casilla c = null;
         if (correcto(numCasilla)) {
             c = casillas.get(numCasilla);
         }
         return c;
     }
+    
+    public ArrayList<Casilla> getCasillas() {
+        return casillas;
+    } 
     
     int nuevaPosicion(int actual, int tirada) {
         int posicion = (actual+tirada) % casillas.size();
@@ -54,7 +58,7 @@ public class Tablero {
         return posicion;
     }
     
-    int getNumCasillas(){
+    public int getNumCasillas(){
         return casillas.size();
     }
     
