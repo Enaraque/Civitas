@@ -61,7 +61,9 @@ public class Jugador implements Comparable<Jugador>{
     //Interfaz
     @Override
     public int compareTo(Jugador otro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //-1 si es menor que otro. 0 si son iguales. 1 si es mayor
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Float.valueOf(this.getSaldo()).compareTo(Float.valueOf(otro.getSaldo()));
     }
     
     /**

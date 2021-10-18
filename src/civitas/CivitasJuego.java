@@ -5,6 +5,7 @@
  */
 package civitas;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -20,7 +21,7 @@ public class CivitasJuego {
     
     
     
-    private int indiceJugador;
+    private int indiceJugadorActual;
     private MazoSorpresas mazo;
     private Tablero tablero;
     private ArrayList<Jugador> jugadores;
@@ -35,7 +36,7 @@ public class CivitasJuego {
 
         estado = gestor.estadoInicial();        
         Dado.getInstance().setDebug(debug);
-        indiceJugador = Dado.getInstance().quienEmpieza(NUMAXJUGADORES);
+        indiceJugadorActual = Dado.getInstance().quienEmpieza(NUMAXJUGADORES);
         mazo = new MazoSorpresas(debug);
         
         tablero = new Tablero();
@@ -153,9 +154,97 @@ public class CivitasJuego {
         String cobrarCasaHotel2 = "¡Hoy es tu día de de suerte! Has ido al banco y por ser tan buen cliente\n"
                 + "han decidido hacerte un regalo\n" + "Cobra " + SORPRESAPORCASAHOTEL1 + "\n";
         Sorpresa sorpresaPorCasaHotel4 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, cobrarCasaHotel2, SORPRESAPORCASAHOTEL1);
-        mazo.alMazo(sorpresaPorCasaHotel4);
-        
+        mazo.alMazo(sorpresaPorCasaHotel4);    
+    }
+    
+    public Jugador getJugadorActual() {
+        return jugadores.get(indiceJugadorActual);
+    }
+    
+    public int getIndiceJugadorActual() {
+        return indiceJugadorActual;
+    }
+    
+    public Tablero getTablero() {
+        return tablero;
+    }
+    
+    public ArrayList<Jugador> getJugadores() {
+        return jugadores;
+    }
+    
+    private void pasarTurno() {
+        int pasar =  (getIndiceJugadorActual()+1) % jugadores.size();
+        indiceJugadorActual = pasar;
+    }
+    
+    public void siguientePasoCompletado(OperacionJuego operacion) {
+        estado = gestor.siguienteEstado(jugadores.get(getIndiceJugadorActual()), estado, operacion);
+    }
+    
+    public boolean construirCasa(int ip) {
+        jugadores.get(getIndiceJugadorActual()).construirCasa(ip);
+        return true;
+    }
+    
+    public boolean construirHotel(int ip) {
+        jugadores.get(getIndiceJugadorActual()).construirHotel(ip);
+        return true;
+    }
+    
+    public boolean finalDelJuego() {
+        for (int i = 0; i < jugadores.size(); i++) {
+            if (jugadores.get(i).enBancarrota()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    //mal hecho, sin terminar;
+    private ArrayList<Jugador> ranking() {
+        Collections.sort(jugadores);
+        return jugadores;
+    }
+    
+    private void contabilizarPasosPorSalida() {
+        if (tablero.computarPasoPorSalida()) {
+            jugadores.get(getIndiceJugadorActual()).pasaPorSalida();
+        }
+    }
+    
+    //metodos a implementar en la práctica siguiente.
+    /*
+    private void avanzaJugador() {
         
     }
     
+    public OperacionJuego siguientePaso() {
+        
+    }
+    
+    public boolean comprar() {
+    
+    }
+    */
+    
+    public static void main(String[] args) {
+        ArrayList<String> nombres = new ArrayList<>();
+            nombres.add("jugador1");
+            nombres.add("jugador2");
+            nombres.add("jugador3");
+            nombres.add("jugador4");
+            
+        CivitasJuego prueba = new CivitasJuego(nombres, true);
+        prueba.getJugadores().get(0).modificaSaldo(10);
+        prueba.getJugadores().get(1).modificaSaldo(20);
+        prueba.getJugadores().get(2).modificaSaldo(30);
+        prueba.getJugadores().get(3).modificaSaldo(40);
+        prueba.ranking();
+        
+        for (int i=0; i < NUMAXJUGADORES; i++) {
+            System.out.println("el jugador " + prueba.getJugadores().get(i) + "es el numero " + i + " con" + prueba.getJugadores().get(i).getSaldo());
+            
+        }
+    }
 }
