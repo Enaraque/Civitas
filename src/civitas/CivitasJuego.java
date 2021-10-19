@@ -35,7 +35,7 @@ public class CivitasJuego {
             Jugador aux = new Jugador(nombres.get(i));
             jugadores.add(aux);
         }
-        
+       
         gestor = new GestorEstados();
         estado = gestor.estadoInicial();        
         Dado.getInstance().setDebug(debug);
@@ -281,6 +281,17 @@ public class CivitasJuego {
         else {
             System.out.println("No contabilizado bien :(");
         }
+        
+        //mover a casilla (clase jugador)
+        System.out.println("La casilla actual es " + prueba.getJugadorActual().getCasillaActual()+ "    ");
+        prueba.getJugadorActual().moverACasilla(12);
+        System.out.println("La casilla actual es " + prueba.getJugadorActual().getCasillaActual()+ "    ");
+        
+        //Paga alquiler de clase jugador (tambien compruebo si funciona el metodo paga);
+        
+        System.out.println("El saldo del jugador actual es de " + prueba.getJugadorActual().getSaldo());
+        prueba.getJugadorActual().pagaAlquiler(300);
+        System.out.println("El saldo del jugador actual es de " + prueba.getJugadorActual().getSaldo());
         
         //final del juego
         prueba.getJugadores().get(0).paga(prueba.getJugadores().get(0).getSaldo()+1);
