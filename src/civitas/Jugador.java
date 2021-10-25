@@ -254,8 +254,7 @@ public class Jugador implements Comparable<Jugador>{
     * otro caso.
     */
     private boolean puedoEdificarCasa(Casilla propiedad){
-        return (propiedad.esEsteElPropietario(this) && 
-                puedoGastar(propiedad.getPrecioEdificar()) &&
+        return (puedoGastar(propiedad.getPrecioEdificar()) &&
                 propiedad.getNumCasas() < this.getCasasMax());
     }
     
@@ -269,10 +268,15 @@ public class Jugador implements Comparable<Jugador>{
     * otro caso.
     */
     private boolean puedoEdificarHotel(Casilla propiedad){
-        return (propiedad.esEsteElPropietario(this) && 
-                puedoGastar(propiedad.getPrecioEdificar()) &&
-                propiedad.getNumHoteles() < this.getHotelesMax() &&
-                propiedad.getNumCasas() >= this.getCasasPorHotel()) ;
+        boolean puedoEdificar = false;
+        float precio = propiedad.getPrecioEdificar();
+        
+        if(this.puedoGastar(precio))
+            if(propiedad.getNumHoteles() < this.getHotelesMax())
+                if(propiedad.getNumCasas() >= this.getCasasPorHotel())
+                    puedoEdificar = true;
+        
+        return puedoEdificar;
     }
     
     /**
@@ -317,15 +321,51 @@ public class Jugador implements Comparable<Jugador>{
     
     //Por implementar en la siguiente sesion (3)
     boolean comprar(Casilla titulo){
-        return false;
+        boolean result = false;
+        
+        if(this.puedeComprar){
+            float precio = titulo.getPrecioCompra();
+            if(this.puedoGastar(precio)){
+                result = titulo.comprar(this);
+                this.getPropiedades().add(titulo);
+                Diario.getInstance().ocurreEvento("El jugador "+this.toString()+" compra la propiedad "+titulo.getNombre());
+                this.puedeComprar = false;
+            }
+            else{
+                Diario.getInstance().ocurreEvento("El jugador "+this.toString()+" no tiene saldo para comprar la propiedad "+titulo.getNombre());
+            }
+        }
+        return result;
     }
     
     boolean construirCasa(int ip){
-        return false;
+        boolean result = false;
+        
+        if(this.existeLaPropiedad(ip)){
+            Casilla propiedad = this.getPropiedades().get(ip);
+            
+            if(this.puedoEdificarCasa(propiedad)){
+                result = propiedad.construirCasa(this); 
+                Diario.getInstance().ocurreEvento("El jugador "+this.getNombre()+
+                " construye una casa en la propiedad "+this.getPropiedades().get(ip).getNombre());
+            }
+        }
+        return result;
     }
     
     boolean construirHotel(int ip){
-        return false;
+        boolean result = false;
+        if(this.existeLaPropiedad(ip)){
+            Casilla propiedad = this.getPropiedades().get(ip);
+            
+            if(this.puedoEdificarHotel(propiedad)){
+                result = propiedad.construirHotel(this);
+                propiedad.derruirCasas(CASASPORHOTEL, this);
+                Diario.getInstance().ocurreEvento("El jugador "+this.getNombre()+
+                " construye un hotel en la propiedad "+this.getPropiedades().get(ip).getNombre());
+            }
+        }
+        return result;
     }
 }
 

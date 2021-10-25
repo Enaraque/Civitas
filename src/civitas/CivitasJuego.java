@@ -97,7 +97,7 @@ public class CivitasJuego {
         tablero.añadeCasilla(casilla12);
         
         Casilla casilla13 = new Casilla("Paseo de los Tristes", 1350, 810, 405);
-        tablero.añadeCasilla(casilla12);
+        tablero.añadeCasilla(casilla13);
         
         Casilla sorpresa4 = new Casilla("SORPRESA", mazo);
         tablero.añadeCasilla(sorpresa4);
@@ -216,20 +216,50 @@ public class CivitasJuego {
         }
     }
     
-    //metodos a implementar en la práctica siguiente.
-    /*
+    
     private void avanzaJugador() {
+        int posicionActual, posicionNueva, tirada;
+        Jugador jugadorActual = this.getJugadorActual();
+        Casilla casillaNueva;
+        //Calculamos la casilla a la que avanza el jugador
+        posicionActual = jugadorActual.getCasillaActual();
+        tirada = Dado.getInstance().tirar();
+        posicionNueva = tablero.nuevaPosicion(posicionActual, tirada);
         
+        //Actualizamos el estado de Tablero y Jugador
+        casillaNueva = tablero.getCasilla(posicionNueva);
+        this.contabilizarPasosPorSalida();
+        jugadorActual.moverACasilla(posicionNueva);
+        
+        casillaNueva.recibeJugador(indiceJugadorActual, jugadores);
     }
     
     public OperacionJuego siguientePaso() {
+        Jugador jugadorActual = getJugadorActual();
+        OperacionJuego operacion = gestor.siguienteOperacion(jugadorActual,estado);
         
+        if(operacion == OperacionJuego.PASAR_TURNO){
+            this.pasarTurno();
+            this.siguientePasoCompletado(operacion);
+        }
+        else if(operacion == OperacionJuego.AVANZAR){
+            this.avanzaJugador();
+            this.siguientePasoCompletado(operacion);
+        }
+        return operacion;
     }
     
     public boolean comprar() {
-    
+        boolean result;
+        
+        Jugador jugadorActual = this.getJugadorActual();
+        int numCasillaActual = jugadorActual.getCasillaActual();
+        Casilla casillaActual = tablero.getCasilla(numCasillaActual);
+        result = jugadorActual.comprar(casillaActual);
+        
+        return result;
     }
-    */
+    
     
     public static void main(String[] args) {
         ArrayList<String> nombres = new ArrayList<>();
@@ -247,7 +277,7 @@ public class CivitasJuego {
         
         //Comprobando ranking();
         for (int i=0; i < NUMAXJUGADORES; i++) {
-            System.out.println("el jugador " + prueba.getJugadores().get(i) + "es el numero " + i + " con " + prueba.getJugadores().get(i).getSaldo());         
+            System.out.println("el jugador " + prueba.getJugadores().get(i) + " es el numero " + (i+1) + " con " + prueba.getJugadores().get(i).getSaldo());         
         }
         
         //Comprobadno el tablero y el mazo.

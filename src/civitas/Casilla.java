@@ -128,26 +128,51 @@ public class Casilla {
     
     //A hacer para la sesion siguiente (3)
     boolean comprar(Jugador jugador){
-        return false;
+        this.Propietario = jugador;
+        jugador.paga(this.precioCompra);
+        return true;
     }
     
     boolean construirCasa(Jugador jugador){
-        return false;
+        jugador.paga(this.getPrecioEdificar());
+        this.numCasas++;
+        return true;
     }
     
     boolean construirHotel(Jugador jugador){
-        return false;
+        jugador.paga(this.getPrecioEdificar());
+        this.numHoteles++;
+        return true;
     }
     
     void recibeJugador(int actual, ArrayList<Jugador> todos){
-    
+        if(this.tipo == TipoCasilla.CALLE){
+            this.recibeJugador_calle(actual, todos);
+        }
+        else if(this.tipo == TipoCasilla.SORPRESA){
+            this.recibeJugador_sorpresa(actual, todos);
+        }
+        else{
+            this.informe(actual, todos);
+        }
     }
     
     void recibeJugador_calle(int actual, ArrayList<Jugador> todos){
-    
+        this.informe(actual, todos);
+        Jugador j_actual = todos.get(actual);
+        if(!this.tienePropietario()){
+            j_actual.puedeComprarCasilla();
+        }
+        else{
+            tramitarAlquiler(j_actual);
+        }
     }
-    void recibeJugador_sorpresa(int actual, ArrayList<Jugador> todos){
     
+    void recibeJugador_sorpresa(int actual, ArrayList<Jugador> todos){
+        Sorpresa sorpresa = this.mazo.siguiente();
+        Diario.getInstance().ocurreEvento("El jugador "+todos.get(actual).getNombre()
+                +" recibe la sorpresa siguiente:\n" + sorpresa.toString());
+        sorpresa.aplicarAJugador(actual, todos);
     }
     
     boolean derruirCasas(int n, Jugador jugador){
