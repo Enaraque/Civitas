@@ -16,8 +16,8 @@ public class CivitasJuego {
     protected static final int SORPRESAPAGARCOBRAR1 = 50;
     protected static final int SORPRESAPAGARCOBRAR2 = 225;
     protected static final int SORPRESAPAGARCOBRAR3 = 570;
-    protected static final int SORPRESAPORCASAHOTEL1 = 550;
-    protected static final int SORPRESAPORCASAHOTEL2 = 780;
+    protected static final int SORPRESAPORCASAHOTEL1 = 50;
+    protected static final int SORPRESAPORCASAHOTEL2 = 75;
     
     
     
@@ -102,7 +102,7 @@ public class CivitasJuego {
         Casilla sorpresa4 = new Casilla("SORPRESA", mazo);
         tablero.añadeCasilla(sorpresa4);
         
-        Casilla casilla14 = new Casilla("Acera del Darro", 1800, 1080, 540);
+        Casilla casilla14 = new Casilla("Acera del Darro", 1500, 1080, 540);
         tablero.añadeCasilla(casilla14); 
     }
     
@@ -117,9 +117,9 @@ public class CivitasJuego {
         Sorpresa sorpresaPagarCobrar2 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, cobrar2, SORPRESAPAGARCOBRAR3);
         mazo.alMazo(sorpresaPagarCobrar2);
         
-        String pagarCasaHotel1 = "Has empezado el dia con una llamada telefonica. Te han dicho que hay\n"
-                + "obras por culpa de los conductos de extracción de humos en los edificios\n"
-                + "Paga " + SORPRESAPORCASAHOTEL2 + ".\n";
+        String pagarCasaHotel1 = "Has empezado el dia con una llamada telefonica. Te han dicho que los\n"+
+                " conductos de extracción de humos de tus edificios son obsoletos y deben ser renovados.\n"
+                + "Paga " + SORPRESAPORCASAHOTEL2 + " por cada edificio que tengas.\n";
         Sorpresa sorpresaPorCasaHotel1 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, pagarCasaHotel1, -SORPRESAPORCASAHOTEL2);
         mazo.alMazo(sorpresaPorCasaHotel1);
         
@@ -128,9 +128,8 @@ public class CivitasJuego {
         Sorpresa sorpresaPagarCobrar3 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, pagar1, -SORPRESAPAGARCOBRAR2);
         mazo.alMazo(sorpresaPagarCobrar3);
         
-        String pagarCasaHotel2 = "Has empezado el día con una llamanda telefónica. Te han dicho que hay\n"
-                + " obras por culpa de los conductos de extracción de humos en los edificios.\n"
-                + "Paga " + SORPRESAPORCASAHOTEL1 + ".\n";
+        String pagarCasaHotel2 = "¡Terremoto! Todos tus edificios han sufrido daños y debes repararlos para que no se caigan.\n"
+                + "Paga " + SORPRESAPORCASAHOTEL1 + " por cada edificio que tengas.\n";
         Sorpresa sorpresaPorCasaHotel2 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, pagarCasaHotel2, -SORPRESAPORCASAHOTEL1);
         mazo.alMazo(sorpresaPorCasaHotel2);
         
@@ -144,8 +143,9 @@ public class CivitasJuego {
         Sorpresa sorpresaPagarCobrar5 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, pagar2, -SORPRESAPAGARCOBRAR1);
         mazo.alMazo(sorpresaPagarCobrar5);
         
-        String cobrarCasaHotel1 = "¡Hoy es tu día de de suerte! Has ido al banco y por ser tan buen cliente\n"
-                + "han decidido hacerte un regalo.\n" + "Cobra " + SORPRESAPORCASAHOTEL2 + ".\n";
+        String cobrarCasaHotel1 = "¡Hoy es tu día de de suerte! El gobierno municipal ha emitido una ordenanza que \n"
+                + "hace que pagues menos IBI en todas tus propiedades.\n" + "Cobra " + SORPRESAPORCASAHOTEL2 + " por cada " 
+                + "edificio que tengas.";
         Sorpresa sorpresaPorCasaHotel3 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, cobrarCasaHotel1, SORPRESAPORCASAHOTEL2);
         mazo.alMazo(sorpresaPorCasaHotel3);
         
@@ -154,8 +154,8 @@ public class CivitasJuego {
         Sorpresa sorpresaPagarCobrar6 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, pagar3, -SORPRESAPAGARCOBRAR3);
         mazo.alMazo(sorpresaPagarCobrar6);
         
-        String cobrarCasaHotel2 = "¡Hoy es tu día de de suerte! Has ido al banco y por ser tan buen cliente\n"
-                + "han decidido hacerte un regalo.\n" + "Cobra " + SORPRESAPORCASAHOTEL1 + ".\n";
+        String cobrarCasaHotel2 = "Un jeque ha venido a Granada ¡y te ha alquilado todas tus propiedades para él y sus siervos!\n"
+                + "Cobra " + SORPRESAPORCASAHOTEL1 + " por cada edificio que tengas.\n";
         Sorpresa sorpresaPorCasaHotel4 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, cobrarCasaHotel2, SORPRESAPORCASAHOTEL1);
         mazo.alMazo(sorpresaPorCasaHotel4);    
     }
@@ -176,7 +176,8 @@ public class CivitasJuego {
         return jugadores;
     }
     
-    private void pasarTurno() {
+    //cambiado a public para el controlador
+    public void pasarTurno() {
         int pasar =  (getIndiceJugadorActual()+1) % jugadores.size();
         indiceJugadorActual = pasar;
     }
@@ -186,13 +187,15 @@ public class CivitasJuego {
     }
     
     public boolean construirCasa(int ip) {
-        jugadores.get(getIndiceJugadorActual()).construirCasa(ip);
-        return true;
+        boolean exito = jugadores.get(getIndiceJugadorActual()).construirCasa(ip);
+        
+        return exito;
     }
     
     public boolean construirHotel(int ip) {
-        jugadores.get(getIndiceJugadorActual()).construirHotel(ip);
-        return true;
+        boolean exito = jugadores.get(getIndiceJugadorActual()).construirHotel(ip);
+        
+        return exito;
     }
     
     public boolean finalDelJuego() {
@@ -204,9 +207,9 @@ public class CivitasJuego {
         return false;
     }
     
-    //mal hecho, sin terminar;
-    private ArrayList<Jugador> ranking() {
-        Collections.sort(jugadores);
+    //puesto publi para utilizarlo en vistaTextual y en el controlador
+    public ArrayList<Jugador> ranking() {
+        Collections.sort(jugadores, Collections.reverseOrder());
         return jugadores;
     }
     
@@ -216,8 +219,8 @@ public class CivitasJuego {
         }
     }
     
-    
-    private void avanzaJugador() {
+    //hecho pubico para utilizarlo en controlador
+    public void avanzaJugador() {
         int posicionActual, posicionNueva, tirada;
         Jugador jugadorActual = this.getJugadorActual();
         Casilla casillaNueva;
@@ -260,7 +263,7 @@ public class CivitasJuego {
         return result;
     }
     
-    
+    /*
     public static void main(String[] args) {
         ArrayList<String> nombres = new ArrayList<>();
             nombres.add("jugador1");
@@ -336,4 +339,5 @@ public class CivitasJuego {
         
      
     }
+*/
 }

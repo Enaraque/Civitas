@@ -112,6 +112,8 @@ public class Casilla {
         if(this.tienePropietario() && !this.esEsteElPropietario(jugador)){
             jugador.pagaAlquiler(this.getPrecioAlquilerCompleto());
             this.Propietario.recibe(this.getPrecioAlquilerCompleto());
+            Diario.getInstance().ocurreEvento(jugador.getNombre() + " paga " 
+                    + this.getPrecioAlquilerCompleto() + " de alquiler a " + this.Propietario.getNombre());
         }
     }
     
@@ -121,8 +123,9 @@ public class Casilla {
     }
     
     public String toString() {
-        return  (tipo +" "+ nombre+".Precios: Compra:"+ precioCompra+", Edificar: "
-                + precioEdificar+", Alquiler base: "+ precioBaseAlquiler+", Casas: "+ numCasas +", Hoteles: "+ numHoteles);
+        return  (tipo +" "+ nombre+".\n\t"
+                + "Precios: Compra:"+ precioCompra+", Edificar: "+ precioEdificar+", Alquiler base: "+ precioBaseAlquiler+".\n\t" 
+                + "Edificaciones: Casas: "+ numCasas +", Hoteles: "+ numHoteles);
     }
 
     

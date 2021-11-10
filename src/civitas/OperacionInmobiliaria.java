@@ -9,9 +9,8 @@ package civitas;
  *
  * @author enriquearaqueespinosa
  */
-public enum OperacionJuego {
-    AVANZAR,
-    GESTIONAR,
-    PASAR_TURNO,
-    COMPRAR 
+public enum OperacionInmobiliaria {
+    CONSTRUIR_CASA,
+    CONSTRUIR_HOTEL,
+    TERMINAR
 }

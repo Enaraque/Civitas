@@ -50,19 +50,24 @@ public class Jugador implements Comparable<Jugador>{
     }
     
     /**
-    * Devuelve el valor de la constante de clase CASASPORHOTEL.
+    * Devuelve la suma del número de las casas y hoteles construidos.
     *
-    * @return Numero de casas necesarias para construir un hotel
+    * @return Numero de casas y hoteles del jugador.
     */
     int cantidadCasasHoteles(){
-        return Jugador.CASASPORHOTEL;
+        int casasHoteles = 0;
+        
+        for(int i = 0; i < this.propiedades.size(); i++){
+            casasHoteles+=this.propiedades.get(i).cantidadCasasHoteles();
+        }
+        
+        return casasHoteles;
     }
     
     //Interfaz
     @Override
     public int compareTo(Jugador otro) {
         //-1 si es menor que otro. 0 si son iguales. 1 si es mayor
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return Float.valueOf(this.getSaldo()).compareTo(Float.valueOf(otro.getSaldo()));
     }
     
@@ -152,7 +157,8 @@ public class Jugador implements Comparable<Jugador>{
     *
     * @return ArrayList de Casillas con las casillas que posee el jugador.
     */
-    protected ArrayList<Casilla> getPropiedades(){
+    //Cambio la visibilidad protected a public para poder hacer actualiza() en vistaTextuak.
+    public ArrayList<Casilla> getPropiedades(){
         return this.propiedades;
     }
     
@@ -311,12 +317,14 @@ public class Jugador implements Comparable<Jugador>{
     
     /**
     * Devuelve informacion sobre el jugador.
-    * En este caso, su nombre.
     *
     * @return String con el nombre del jugador.
     */
     public String toString(){
-        return this.getNombre();
+        String info;
+        info = "JUGADOR: " + nombre + ". Saldo: " + saldo + ". Con un total de: "
+                + propiedades.size() + " propiedades. Casilla actual: " +this.casillaActual;
+        return info;
     }
     
     //Por implementar en la siguiente sesion (3)
@@ -328,11 +336,11 @@ public class Jugador implements Comparable<Jugador>{
             if(this.puedoGastar(precio)){
                 result = titulo.comprar(this);
                 this.getPropiedades().add(titulo);
-                Diario.getInstance().ocurreEvento("El jugador "+this.toString()+" compra la propiedad "+titulo.getNombre());
+                Diario.getInstance().ocurreEvento("El jugador "+this.getNombre()+" compra la propiedad "+titulo.getNombre());
                 this.puedeComprar = false;
             }
             else{
-                Diario.getInstance().ocurreEvento("El jugador "+this.toString()+" no tiene saldo para comprar la propiedad "+titulo.getNombre());
+                Diario.getInstance().ocurreEvento("El jugador "+this.getNombre()+" no tiene saldo para comprar la propiedad "+titulo.getNombre());
             }
         }
         return result;
@@ -349,6 +357,10 @@ public class Jugador implements Comparable<Jugador>{
                 Diario.getInstance().ocurreEvento("El jugador "+this.getNombre()+
                 " construye una casa en la propiedad "+this.getPropiedades().get(ip).getNombre());
             }
+            else{
+                Diario.getInstance().ocurreEvento("El jugador "+this.getNombre()+ " NO ha podido construir una casa en la propiedad "
+                    + this.getPropiedades().get(ip).getNombre());
+            }
         }
         return result;
     }
@@ -363,6 +375,10 @@ public class Jugador implements Comparable<Jugador>{
                 propiedad.derruirCasas(CASASPORHOTEL, this);
                 Diario.getInstance().ocurreEvento("El jugador "+this.getNombre()+
                 " construye un hotel en la propiedad "+this.getPropiedades().get(ip).getNombre());
+            }
+            else{
+                Diario.getInstance().ocurreEvento("El jugador "+this.getNombre()+
+                " no ha podido construir un hotel en la propiedad "+this.getPropiedades().get(ip).getNombre());
             }
         }
         return result;

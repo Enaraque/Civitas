@@ -15,7 +15,7 @@ public class Tablero {
     
     public Tablero() {
         casillas = new ArrayList<Casilla>();
-        Casilla nueva = new Casilla("Salida",0, 0, 0);
+        Casilla nueva = new Casilla("Salida");
         casillas.add(nueva);
         porSalida = false;
     }
