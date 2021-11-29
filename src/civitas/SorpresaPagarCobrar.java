@@ -20,6 +20,7 @@ public class SorpresaPagarCobrar extends Sorpresa{
         this.valor = valor;
     }
     
+    @Override
     void aplicarAJugador(int actual, ArrayList<Jugador> todos){
         aplicarAJugador_pagarCobrar(actual,todos);
     }
