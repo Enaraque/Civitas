@@ -19,7 +19,7 @@ public class Jugador implements Comparable<Jugador>{
     private int casillaActual;
     private boolean puedeComprar;
     private float saldo;
-    private ArrayList<Casilla> propiedades;
+    private ArrayList<CasillaCalle> propiedades;
 
     /**
     * Constructor de la clase Jugador
@@ -32,7 +32,7 @@ public class Jugador implements Comparable<Jugador>{
         this.casillaActual = 0;
         this.saldo = SALDOINICIAL;
         this.puedeComprar = false;
-        this.propiedades = new ArrayList<Casilla>();
+        this.propiedades = new ArrayList<CasillaCalle>();
     }
     
     /**
@@ -46,7 +46,7 @@ public class Jugador implements Comparable<Jugador>{
         this.casillaActual = otro.casillaActual;
         this.puedeComprar = otro.puedeComprar;
         this.saldo = otro.saldo;
-        this.propiedades = new ArrayList<Casilla>(otro.propiedades);
+        this.propiedades = new ArrayList<CasillaCalle>(otro.propiedades);
     }
     
     /**
@@ -158,7 +158,7 @@ public class Jugador implements Comparable<Jugador>{
     * @return ArrayList de Casillas con las casillas que posee el jugador.
     */
     //Cambio la visibilidad protected a public para poder hacer actualiza() en vistaTextuak.
-    public ArrayList<Casilla> getPropiedades(){
+    public ArrayList<CasillaCalle> getPropiedades(){
         return this.propiedades;
     }
     
@@ -259,7 +259,7 @@ public class Jugador implements Comparable<Jugador>{
     * @return true si se puede construir la casa, false en
     * otro caso.
     */
-    private boolean puedoEdificarCasa(Casilla propiedad){
+    private boolean puedoEdificarCasa(CasillaCalle propiedad){
         return (puedoGastar(propiedad.getPrecioEdificar()) &&
                 propiedad.getNumCasas() < this.getCasasMax());
     }
@@ -273,7 +273,7 @@ public class Jugador implements Comparable<Jugador>{
     * @return true si se puede construir el hotel, false en
     * otro caso.
     */
-    private boolean puedoEdificarHotel(Casilla propiedad){
+    private boolean puedoEdificarHotel(CasillaCalle propiedad){
         boolean puedoEdificar = false;
         float precio = propiedad.getPrecioEdificar();
         
@@ -328,7 +328,7 @@ public class Jugador implements Comparable<Jugador>{
     }
     
     //Por implementar en la siguiente sesion (3)
-    boolean comprar(Casilla titulo){
+    boolean comprar(CasillaCalle titulo){
         boolean result = false;
         
         if(this.puedeComprar){
@@ -350,7 +350,7 @@ public class Jugador implements Comparable<Jugador>{
         boolean result = false;
         
         if(this.existeLaPropiedad(ip)){
-            Casilla propiedad = this.getPropiedades().get(ip);
+            CasillaCalle propiedad = this.getPropiedades().get(ip);
             
             if(this.puedoEdificarCasa(propiedad)){
                 result = propiedad.construirCasa(this); 
@@ -368,7 +368,7 @@ public class Jugador implements Comparable<Jugador>{
     boolean construirHotel(int ip){
         boolean result = false;
         if(this.existeLaPropiedad(ip)){
-            Casilla propiedad = this.getPropiedades().get(ip);
+            CasillaCalle propiedad = this.getPropiedades().get(ip);
             
             if(this.puedoEdificarHotel(propiedad)){
                 result = propiedad.construirHotel(this);

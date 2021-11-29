@@ -48,115 +48,115 @@ public class CivitasJuego {
     }
     
     private void inicializarTablero(MazoSorpresas mazo) {
-        Casilla casilla1 = new Casilla("Calle Periodista Daniel Saucedo Aranda", 320, 192, 96);
+        CasillaCalle casilla1 = new CasillaCalle("Calle Periodista Daniel Saucedo Aranda", 320, 192, 96);
         tablero.añadeCasilla(casilla1);
         
-        Casilla casilla2 = new Casilla("Calle Periodista Luis Seco de Lucena", 325, 195, 97);
+        CasillaCalle casilla2 = new CasillaCalle("Calle Periodista Luis Seco de Lucena", 325, 195, 97);
         tablero.añadeCasilla(casilla2);
         
-        Casilla sorpresa1 = new Casilla("SORPRESA", mazo);
+        CasillaSorpresa sorpresa1 = new CasillaSorpresa("SORPRESA", mazo);
         tablero.añadeCasilla(sorpresa1);
         
-        Casilla casilla3 = new Casilla("Calle Periodista Fernando Gómez de la Cruz", 340, 270, 135);
+        CasillaCalle casilla3 = new CasillaCalle("Calle Periodista Fernando Gómez de la Cruz", 340, 270, 135);
         tablero.añadeCasilla(casilla3);
         
-        Casilla casilla4 = new Casilla("Av. Francisco Ayala", 400, 240, 120);
+        CasillaCalle casilla4 = new CasillaCalle("Av. Francisco Ayala", 400, 240, 120);
         tablero.añadeCasilla(casilla4);
         
-        Casilla casilla5 = new Casilla("Calle Obispo Hurtado", 435, 261, 130);
+        CasillaCalle casilla5 = new CasillaCalle("Calle Obispo Hurtado", 435, 261, 130);
         tablero.añadeCasilla(casilla5);
         
-        Casilla casilla6 = new Casilla("Calle Azorín", 460, 276, 138);
+        CasillaCalle casilla6 = new CasillaCalle("Calle Azorín", 460, 276, 138);
         tablero.añadeCasilla(casilla6);
         
-        Casilla sorpresa2 = new Casilla("SORPRESA", mazo);
+        CasillaSorpresa sorpresa2 = new CasillaSorpresa("SORPRESA", mazo);
         tablero.añadeCasilla(sorpresa2);
         
-        Casilla casilla7 = new Casilla("Calle Casillas de Prats", 490, 294, 147);
+        CasillaCalle casilla7 = new CasillaCalle("Calle Casillas de Prats", 490, 294, 147);
         tablero.añadeCasilla(casilla7);
         
         Casilla descanso = new Casilla("PARKING");
         tablero.añadeCasilla(descanso);
         
-        Casilla casilla8 = new Casilla("Ancha de Gracia", 545, 327, 164);
+        CasillaCalle casilla8 = new CasillaCalle("Ancha de Gracia", 545, 327, 164);
         tablero.añadeCasilla(casilla8);
         
-        Casilla casilla9 = new Casilla("Calle Recogidas", 620, 372, 186);
+        CasillaCalle casilla9 = new CasillaCalle("Calle Recogidas", 620, 372, 186);
         tablero.añadeCasilla(casilla9);
         
-        Casilla sorpresa3 = new Casilla("SORPRESA", mazo);
+        CasillaSorpresa sorpresa3 = new CasillaSorpresa("SORPRESA", mazo);
         tablero.añadeCasilla(sorpresa3);
         
-        Casilla casilla10 = new Casilla("Calle Martinez de la Rosa", 750, 450, 225);
+        CasillaCalle casilla10 = new CasillaCalle("Calle Martinez de la Rosa", 750, 450, 225);
         tablero.añadeCasilla(casilla10);
         
-        Casilla casilla11 = new Casilla("Calle Pedro Antonio de Alarcón", 900, 540, 270);
+        CasillaCalle casilla11 = new CasillaCalle("Calle Pedro Antonio de Alarcón", 900, 540, 270);
         tablero.añadeCasilla(casilla11);
         
-        Casilla casilla12 = new Casilla("Calle Oficios", 1150, 690, 345);
+        CasillaCalle casilla12 = new CasillaCalle("Calle Oficios", 1150, 690, 345);
         tablero.añadeCasilla(casilla12);
         
-        Casilla casilla13 = new Casilla("Paseo de los Tristes", 1350, 810, 405);
+        CasillaCalle casilla13 = new CasillaCalle("Paseo de los Tristes", 1350, 810, 405);
         tablero.añadeCasilla(casilla13);
         
-        Casilla sorpresa4 = new Casilla("SORPRESA", mazo);
+        CasillaSorpresa sorpresa4 = new CasillaSorpresa("SORPRESA", mazo);
         tablero.añadeCasilla(sorpresa4);
         
-        Casilla casilla14 = new Casilla("Acera del Darro", 1500, 1080, 540);
+        CasillaCalle casilla14 = new CasillaCalle("Acera del Darro", 1500, 1080, 540);
         tablero.añadeCasilla(casilla14); 
     }
     
     private void inicializarMazoSorpresas() {
         String cobrar1 = "Al ir al supermercado a comprar leche compraste un boleto de loteria,\n"
                 + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR1 + ".\n";
-        Sorpresa sorpresaPagarCobrar1 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, cobrar1, SORPRESAPAGARCOBRAR1);
+        SorpresaPagarCobrar sorpresaPagarCobrar1 = new SorpresaPagarCobrar(cobrar1, SORPRESAPAGARCOBRAR1);
         mazo.alMazo(sorpresaPagarCobrar1);
         
         String cobrar2 = "Al ir al supermercado a comprar leche compraste un boleto de loteria,\n"
                 + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR3 + ".\n";
-        Sorpresa sorpresaPagarCobrar2 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, cobrar2, SORPRESAPAGARCOBRAR3);
+        SorpresaPagarCobrar sorpresaPagarCobrar2 = new SorpresaPagarCobrar(cobrar2, SORPRESAPAGARCOBRAR3);
         mazo.alMazo(sorpresaPagarCobrar2);
         
         String pagarCasaHotel1 = "Has empezado el dia con una llamada telefonica. Te han dicho que los\n"+
                 " conductos de extracción de humos de tus edificios son obsoletos y deben ser renovados.\n"
                 + "Paga " + SORPRESAPORCASAHOTEL2 + " por cada edificio que tengas.\n";
-        Sorpresa sorpresaPorCasaHotel1 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, pagarCasaHotel1, -SORPRESAPORCASAHOTEL2);
+        SorpresaPorCasaHotel sorpresaPorCasaHotel1 = new SorpresaPorCasaHotel(pagarCasaHotel1, -SORPRESAPORCASAHOTEL2);
         mazo.alMazo(sorpresaPorCasaHotel1);
         
         String pagar1 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente \n"
                 + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR2 + ".\n";
-        Sorpresa sorpresaPagarCobrar3 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, pagar1, -SORPRESAPAGARCOBRAR2);
+        SorpresaPagarCobrar sorpresaPagarCobrar3 = new SorpresaPagarCobrar(pagar1, -SORPRESAPAGARCOBRAR2);
         mazo.alMazo(sorpresaPagarCobrar3);
         
         String pagarCasaHotel2 = "¡Terremoto! Todos tus edificios han sufrido daños y debes repararlos para que no se caigan.\n"
                 + "Paga " + SORPRESAPORCASAHOTEL1 + " por cada edificio que tengas.\n";
-        Sorpresa sorpresaPorCasaHotel2 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, pagarCasaHotel2, -SORPRESAPORCASAHOTEL1);
+        SorpresaPorCasaHotel sorpresaPorCasaHotel2 = new SorpresaPorCasaHotel(pagarCasaHotel2, -SORPRESAPORCASAHOTEL1);
         mazo.alMazo(sorpresaPorCasaHotel2);
         
         String cobrar3 = "Al ir al supermercado a compar leche compraste un boleto de loteria,\n"
                 + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR2 + ".\n";
-        Sorpresa sorpresaPagarCobrar4 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, cobrar3, SORPRESAPAGARCOBRAR2);
+        SorpresaPagarCobrar sorpresaPagarCobrar4 = new SorpresaPagarCobrar(cobrar3, SORPRESAPAGARCOBRAR2);
         mazo.alMazo(sorpresaPagarCobrar4);
         
         String pagar2 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente,\n"
                 + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR1 + ".\n";
-        Sorpresa sorpresaPagarCobrar5 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, pagar2, -SORPRESAPAGARCOBRAR1);
+        SorpresaPagarCobrar sorpresaPagarCobrar5 = new SorpresaPagarCobrar(pagar2, -SORPRESAPAGARCOBRAR1);
         mazo.alMazo(sorpresaPagarCobrar5);
         
         String cobrarCasaHotel1 = "¡Hoy es tu día de de suerte! El gobierno municipal ha emitido una ordenanza que \n"
                 + "hace que pagues menos IBI en todas tus propiedades.\n" + "Cobra " + SORPRESAPORCASAHOTEL2 + " por cada " 
                 + "edificio que tengas.";
-        Sorpresa sorpresaPorCasaHotel3 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, cobrarCasaHotel1, SORPRESAPORCASAHOTEL2);
+        SorpresaPorCasaHotel sorpresaPorCasaHotel3 = new SorpresaPorCasaHotel(cobrarCasaHotel1, SORPRESAPORCASAHOTEL2);
         mazo.alMazo(sorpresaPorCasaHotel3);
         
         String pagar3 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente \n"
                 + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR3 + ".\n";
-        Sorpresa sorpresaPagarCobrar6 = new Sorpresa(TipoSorpresa.PAGARCOBRAR, pagar3, -SORPRESAPAGARCOBRAR3);
+        SorpresaPagarCobrar sorpresaPagarCobrar6 = new SorpresaPagarCobrar(pagar3, -SORPRESAPAGARCOBRAR3);
         mazo.alMazo(sorpresaPagarCobrar6);
         
         String cobrarCasaHotel2 = "Un jeque ha venido a Granada ¡y te ha alquilado todas tus propiedades para él y sus siervos!\n"
                 + "Cobra " + SORPRESAPORCASAHOTEL1 + " por cada edificio que tengas.\n";
-        Sorpresa sorpresaPorCasaHotel4 = new Sorpresa(TipoSorpresa.PORCASAHOTEL, cobrarCasaHotel2, SORPRESAPORCASAHOTEL1);
+        SorpresaPorCasaHotel sorpresaPorCasaHotel4 = new SorpresaPorCasaHotel(cobrarCasaHotel2, SORPRESAPORCASAHOTEL1);
         mazo.alMazo(sorpresaPorCasaHotel4);    
     }
     
@@ -257,7 +257,7 @@ public class CivitasJuego {
         
         Jugador jugadorActual = this.getJugadorActual();
         int numCasillaActual = jugadorActual.getCasillaActual();
-        Casilla casillaActual = tablero.getCasilla(numCasillaActual);
+        CasillaCalle casillaActual = (CasillaCalle)tablero.getCasilla(numCasillaActual);
         result = jugadorActual.comprar(casillaActual);
         
         return result;

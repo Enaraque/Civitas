@@ -61,18 +61,18 @@ public class Civitas {
         
         //Comprobacion 4: Tipos enumerados
         System.out.println("\nComprobacion 4: Mostrar tipos enumerados.");
-        
+        /*
         EstadoJuego ej = EstadoJuego.INICIO_TURNO;
         TipoCasilla tc = TipoCasilla.CALLE;
         TipoSorpresa ts = TipoSorpresa.PAGARCOBRAR;
         
         System.out.println(ej+"\t"+tc+"\t"+ts);
-        
+        */
         //Comprobacion 5: Clase Tablero y Clase Casilla
         
         System.out.println("\nComprobacion 5: Pruebas de Tablero y Casilla.");
         Tablero t = new Tablero();
-        
+        /*
         t.añadeCasilla(new Casilla("Gran Via de Colon", 400, 200, 100));
         t.añadeCasilla(new Casilla("Carretera de Cordoba", 100, 50, 25));
         t.añadeCasilla(new Casilla("Paseo de los Tristes", 375, 200, 125));
@@ -129,7 +129,7 @@ public class Civitas {
             casilla_actual = t.nuevaPosicion(casilla_actual, Dado.getInstance().tirar());
             System.out.println("Tirada "+i+"="+Dado.getInstance().getUltimoResultado()+".\tPosicion "+i+"="+casilla_actual+".");
         }
-
+        */
         //Esto es una prueba
     }
     
