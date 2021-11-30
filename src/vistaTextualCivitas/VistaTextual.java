@@ -151,10 +151,10 @@ public class VistaTextual implements Vista {
     }
 
     public void mostrarEventos() {
-        if(Diario.getInstance().eventosPendientes())
+        if(!Diario.getInstance().eventosPendientes())
             System.out.println("No hay eventos que mostrar");
         else{
-            int cont = 0;
+            int cont = 1;
             do{
                 System.out.println("Evento número " + cont + ":      " + Diario.getInstance().leerEvento());
                 cont++;
@@ -162,3 +162,4 @@ public class VistaTextual implements Vista {
         }
     }
 }
+
