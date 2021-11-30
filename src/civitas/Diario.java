@@ -3,19 +3,17 @@ package civitas;
 import java.util.ArrayList;
 
 public class Diario {
-  static final private Diario instance = new Diario();
+    
+    static final private Diario instance = new Diario();
+    private final ArrayList<String> eventos;
   
-  private final ArrayList<String> eventos;
-  
-  static public Diario getInstance() {
-    return instance;
-  }
+    static public Diario getInstance() {
+        return instance;
+    }
 
     public ArrayList<String> getEventos() {
         return eventos;
     }
-  
-  
   
   private Diario () {
     eventos = new ArrayList<>();

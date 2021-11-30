@@ -88,7 +88,7 @@ public class Jugador implements Comparable<Jugador>{
     * @param ip un entero no negativo.
     * @return True si y solo si ip es un indice válido.
     */
-    private boolean existeLaPropiedad(int ip){
+    protected boolean existeLaPropiedad(int ip){
         assert(ip >= 0);
         return this.getPropiedades().size() > ip;
     }
@@ -99,7 +99,7 @@ public class Jugador implements Comparable<Jugador>{
     * @return Numero de casas maximo que se pueden edificar
     * en una casilla.
     */
-    private int getCasasMax(){
+    protected int getCasasMax(){
         return Jugador.CASASMAX;
     }
     
@@ -109,7 +109,7 @@ public class Jugador implements Comparable<Jugador>{
     * @return Numero de hoteles maximo que se pueden edificar
     * en una casilla.
     */
-    private int getHotelesMax(){
+    protected int getHotelesMax(){
         return Jugador.HOTELESMAX;
     }
     
@@ -119,7 +119,7 @@ public class Jugador implements Comparable<Jugador>{
     * @return Cantidad de dinero que se otorga a un jugador al
     * pasar por la casilla de salida.
     */
-    private float getPremioPasoSalida(){
+    protected float getPremioPasoSalida(){
         return Jugador.PASOPORSALIDA;
     }
     
@@ -259,7 +259,7 @@ public class Jugador implements Comparable<Jugador>{
     * @return true si se puede construir la casa, false en
     * otro caso.
     */
-    private boolean puedoEdificarCasa(CasillaCalle propiedad){
+    boolean puedoEdificarCasa(CasillaCalle propiedad){
         return (puedoGastar(propiedad.getPrecioEdificar()) &&
                 propiedad.getNumCasas() < this.getCasasMax());
     }
@@ -273,7 +273,7 @@ public class Jugador implements Comparable<Jugador>{
     * @return true si se puede construir el hotel, false en
     * otro caso.
     */
-    private boolean puedoEdificarHotel(CasillaCalle propiedad){
+    boolean puedoEdificarHotel(CasillaCalle propiedad){
         boolean puedoEdificar = false;
         float precio = propiedad.getPrecioEdificar();
         
@@ -323,7 +323,7 @@ public class Jugador implements Comparable<Jugador>{
     public String toString(){
         String info;
         info = "JUGADOR: " + nombre + ". Saldo: " + saldo + ". Con un total de: "
-                + propiedades.size() + " propiedades. Casilla actual: " +this.casillaActual;
+                + propiedades.size() + " propiedades. Casilla actual: " +this.casillaActual + ".";
         return info;
     }
     
@@ -382,6 +382,11 @@ public class Jugador implements Comparable<Jugador>{
             }
         }
         return result;
+    }
+    
+    protected JugadorEspeculador convertir(){
+        JugadorEspeculador especulador = new JugadorEspeculador(this);
+        return especulador;
     }
 }
 

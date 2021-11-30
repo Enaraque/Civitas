@@ -136,4 +136,8 @@ public class CasillaCalle extends Casilla{
         
         return exito;
     }   
+
+    void actualizaPropiedadesPorConversion(JugadorEspeculador jugador) {
+        this.Propietario = jugador;
+    }
 }

@@ -12,11 +12,10 @@ import java.util.ArrayList;
  * @author enriquearaqueespinosa
  */
 public class SorpresaPagarCobrar extends Sorpresa{
-    private String texto;
     private int valor;
     
-    SorpresaPagarCobrar(String texto, int valor) {
-        this.texto = texto;
+    public SorpresaPagarCobrar(String texto, int valor){
+        super(texto);
         this.valor = valor;
     }
     
@@ -28,12 +27,6 @@ public class SorpresaPagarCobrar extends Sorpresa{
     private void aplicarAJugador_pagarCobrar(int actual, ArrayList<Jugador> todos){
         this.informe(actual, todos);
         todos.get(actual).modificaSaldo(this.valor);
-    }
-    
-    @Override
-    void informe(int actual, ArrayList<Jugador> todos){
-        Diario.getInstance().ocurreEvento("Aplicando la siguiente sorpresa a "
-                +todos.get(actual).toString()+": "+this.toString());
     }
     
     @Override

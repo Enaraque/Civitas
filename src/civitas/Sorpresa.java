@@ -13,7 +13,13 @@ import java.util.ArrayList;
  */
 
 public abstract class Sorpresa {
-
+    
+    protected String texto;
+    
+    Sorpresa(String texto) {
+        this.texto = texto;
+    }
+    
     /**
     * Aplica esta carta sorpresa a algun jugador.
     * 
@@ -29,7 +35,10 @@ public abstract class Sorpresa {
     * @param actual Indice del jugador sobre el cual se aplica.
     * @param todos ArrayList con los jugadores de la partida.
     */
-    abstract void informe(int actual, ArrayList<Jugador> todos);
+    void informe(int actual, ArrayList<Jugador> todos){
+        Diario.getInstance().ocurreEvento("Aplicando la siguiente sorpresa a "
+                +todos.get(actual).toString()+": "+this.toString());
+    }
     
     /**
     * Devuelve informacion sobre la sorpresa.

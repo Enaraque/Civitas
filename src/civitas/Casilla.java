@@ -28,7 +28,7 @@ public class Casilla {
     }
     
     public String toString() {
-        return  (nombre);
+        return nombre;
     }
     
     void recibeJugador(int actual, ArrayList<Jugador> todos){
