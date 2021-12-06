@@ -36,8 +36,7 @@ public class CasillaSorpresa extends Casilla{
     void recibeJugador_sorpresa(int actual, ArrayList<Jugador> todos){
         Sorpresa sorpresa = this.mazo.siguiente();
         Diario.getInstance().ocurreEvento("El jugador "+todos.get(actual).getNombre()
-                +"ha caido en la casilla SORPRESA y recibe la sorpresa siguiente:\n" 
-                + sorpresa.toString());
+                +" ha caido en la casilla " + this.toString());
         sorpresa.aplicarAJugador(actual, todos);
     }
 }

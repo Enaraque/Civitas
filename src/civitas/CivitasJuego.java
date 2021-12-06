@@ -31,7 +31,7 @@ public class CivitasJuego {
     public CivitasJuego(ArrayList<String> nombres, boolean debug) {
         
         jugadores = new ArrayList<Jugador>();
-        for (int i = 0; i < NUMAXJUGADORES; i++) {
+        for (int i = 0; i < NUMAXJUGADORES && !nombres.get(i).isBlank(); i++) {
             Jugador aux = new Jugador(nombres.get(i));
             jugadores.add(aux);
         }
@@ -39,7 +39,7 @@ public class CivitasJuego {
         gestor = new GestorEstados();
         estado = gestor.estadoInicial();        
         Dado.getInstance().setDebug(debug);
-        indiceJugadorActual = Dado.getInstance().quienEmpieza(NUMAXJUGADORES);
+        indiceJugadorActual = Dado.getInstance().quienEmpieza(jugadores.size());
         mazo = new MazoSorpresas(debug);
         
         tablero = new Tablero();
@@ -108,38 +108,38 @@ public class CivitasJuego {
     
     private void inicializarMazoSorpresas() {
         String cobrar1 = "Al ir al supermercado a comprar leche compraste un boleto de loteria,\n"
-                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR1 + ".\n";
+                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR1 + ".";
         SorpresaPagarCobrar sorpresaPagarCobrar1 = new SorpresaPagarCobrar(cobrar1, SORPRESAPAGARCOBRAR1);
         mazo.alMazo(sorpresaPagarCobrar1);
         
         String cobrar2 = "Al ir al supermercado a comprar leche compraste un boleto de loteria,\n"
-                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR3 + ".\n";
+                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR3 + ".";
         SorpresaPagarCobrar sorpresaPagarCobrar2 = new SorpresaPagarCobrar(cobrar2, SORPRESAPAGARCOBRAR3);
         mazo.alMazo(sorpresaPagarCobrar2);
         
         String pagarCasaHotel1 = "Has empezado el dia con una llamada telefonica. Te han dicho que los\n"+
                 " conductos de extracción de humos de tus edificios son obsoletos y deben ser renovados.\n"
-                + "Paga " + SORPRESAPORCASAHOTEL2 + " por cada edificio que tengas.\n";
+                + "Paga " + SORPRESAPORCASAHOTEL2 + " por cada edificio que tengas.";
         SorpresaPorCasaHotel sorpresaPorCasaHotel1 = new SorpresaPorCasaHotel(pagarCasaHotel1, -SORPRESAPORCASAHOTEL2);
         mazo.alMazo(sorpresaPorCasaHotel1);
         
         String pagar1 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente \n"
-                + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR2 + ".\n";
+                + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR2 + ".";
         SorpresaPagarCobrar sorpresaPagarCobrar3 = new SorpresaPagarCobrar(pagar1, -SORPRESAPAGARCOBRAR2);
         mazo.alMazo(sorpresaPagarCobrar3);
         
         String pagarCasaHotel2 = "¡Terremoto! Todos tus edificios han sufrido daños y debes repararlos para que no se caigan.\n"
-                + "Paga " + SORPRESAPORCASAHOTEL1 + " por cada edificio que tengas.\n";
+                + "Paga " + SORPRESAPORCASAHOTEL1 + " por cada edificio que tengas.";
         SorpresaPorCasaHotel sorpresaPorCasaHotel2 = new SorpresaPorCasaHotel(pagarCasaHotel2, -SORPRESAPORCASAHOTEL1);
         mazo.alMazo(sorpresaPorCasaHotel2);
         
         String cobrar3 = "Al ir al supermercado a compar leche compraste un boleto de loteria,\n"
-                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR2 + ".\n";
+                + "hoy lo has comprobado y ¡el premio es tuyo!\n" + "Cobra " + SORPRESAPAGARCOBRAR2 + ".";
         SorpresaPagarCobrar sorpresaPagarCobrar4 = new SorpresaPagarCobrar(cobrar3, SORPRESAPAGARCOBRAR2);
         mazo.alMazo(sorpresaPagarCobrar4);
         
         String pagar2 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente,\n"
-                + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR1 + ".\n";
+                + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR1 + ".";
         SorpresaPagarCobrar sorpresaPagarCobrar5 = new SorpresaPagarCobrar(pagar2, -SORPRESAPAGARCOBRAR1);
         mazo.alMazo(sorpresaPagarCobrar5);
         
@@ -150,12 +150,12 @@ public class CivitasJuego {
         mazo.alMazo(sorpresaPorCasaHotel3);
         
         String pagar3 = "Vas a ir de viaje en coche a casa de tus padres pero no arranca. Desgraciadamente \n"
-                + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR3 + ".\n";
+                + "tienes que llevarlo al taller.\n" + "Pagas " + SORPRESAPAGARCOBRAR3 + ".";
         SorpresaPagarCobrar sorpresaPagarCobrar6 = new SorpresaPagarCobrar(pagar3, -SORPRESAPAGARCOBRAR3);
         mazo.alMazo(sorpresaPagarCobrar6);
         
         String cobrarCasaHotel2 = "Un jeque ha venido a Granada ¡y te ha alquilado todas tus propiedades para él y sus siervos!\n"
-                + "Cobra " + SORPRESAPORCASAHOTEL1 + " por cada edificio que tengas.\n";
+                + "Cobra " + SORPRESAPORCASAHOTEL1 + " por cada edificio que tengas.";
         SorpresaPorCasaHotel sorpresaPorCasaHotel4 = new SorpresaPorCasaHotel(cobrarCasaHotel2, SORPRESAPORCASAHOTEL1);
         mazo.alMazo(sorpresaPorCasaHotel4);    
     }
@@ -207,7 +207,7 @@ public class CivitasJuego {
         return false;
     }
     
-    //puesto publi para utilizarlo en vistaTextual y en el controlador
+    //puesto publico para utilizarlo en vistaTextual y en el controlador
     public ArrayList<Jugador> ranking() {
         Collections.sort(jugadores, Collections.reverseOrder());
         return jugadores;
@@ -219,7 +219,7 @@ public class CivitasJuego {
         }
     }
     
-    //hecho pubico para utilizarlo en controlador
+    //hecho publico para utilizarlo en controlador
     public void avanzaJugador() {
         int posicionActual, posicionNueva, tirada;
         Jugador jugadorActual = this.getJugadorActual();

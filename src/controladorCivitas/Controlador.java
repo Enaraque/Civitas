@@ -9,7 +9,7 @@ import civitas.CivitasJuego;
 import civitas.OperacionJuego;
 import civitas.OperacionInmobiliaria;
 import civitas.GestionInmobiliaria;
-import vistaTextualCivitas.VistaTextual;
+import vistaTextualCivitas.Vista;
 
 /**
  *
@@ -17,9 +17,9 @@ import vistaTextualCivitas.VistaTextual;
  */
 public class Controlador {
     private CivitasJuego juego;
-    private VistaTextual vista;
+    private Vista vista;
     
-     public Controlador(CivitasJuego juego, VistaTextual vista) {
+     public Controlador(CivitasJuego juego, Vista vista) {
         this.juego = juego;
         this.vista = vista;
     }

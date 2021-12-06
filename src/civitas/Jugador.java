@@ -138,17 +138,16 @@ public class Jugador implements Comparable<Jugador>{
     *
     * @return Casilla actual.
     */
-    int getCasillaActual(){
+    public int getCasillaActual(){
         return this.casillaActual;
     }
     
     /**
     * Devuelve el nombre del jugador.
-    * En este caso, su nombre.
     *
     * @return String con el nombre del jugador.
     */
-    protected String getNombre(){
+    public String getNombre(){
         return nombre;
     }
     
@@ -177,7 +176,7 @@ public class Jugador implements Comparable<Jugador>{
     *
     * @return saldo del jugador.
     */
-    protected float getSaldo(){
+    public float getSaldo(){
         return this.saldo;
     }
     
@@ -323,7 +322,7 @@ public class Jugador implements Comparable<Jugador>{
     public String toString(){
         String info;
         info = "JUGADOR: " + nombre + ". Saldo: " + saldo + ". Con un total de: "
-                + propiedades.size() + " propiedades. Casilla actual: " +this.casillaActual + ".";
+                + propiedades.size() + " propiedades. Casilla actual: " +this.casillaActual;
         return info;
     }
     
